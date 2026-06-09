@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 
-import Introduction from "./pages/Introduction";
-import Installation from "./pages/Installation";
-import Features from "./pages/Features";
+import Introduction from "./pages/introduction";
+import Installation from "./pages/installation";
+import Features from "./pages/features";
 
 export default function App() {
   return (
