@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar";
 import Introduction from "./pages/introduction";
 import Installation from "./pages/installation";
 import Features from "./pages/Features";
-import DeleteAccount from "./pages/DeleteAccount";
+import DeleteAccount from "./pages/deleteAccountinfo";
 
 export default function App() {
   return (
