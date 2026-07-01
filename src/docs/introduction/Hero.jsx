@@ -8,6 +8,8 @@ import Logo from "../../components/common/Logo";
 
 import { hero, techStack } from "../../content/introduction";
 
+import feed from "../../assets/screenshots/feed.png";
+
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
@@ -21,8 +23,8 @@ export default function Hero() {
           absolute
           -left-36
           top-0
-          h-[420px]
-          w-[420px]
+          h-105
+          w-105
           rounded-full
           bg-emerald-500/12
           blur-[170px]
@@ -32,10 +34,10 @@ export default function Hero() {
         <div
           className="
           absolute
-          right-[-120px]
+          -right-30
           top-28
-          h-[340px]
-          w-[340px]
+          h-85
+          w-85
           rounded-full
           bg-green-400/10
           blur-[170px]
@@ -62,8 +64,8 @@ export default function Hero() {
           pointer-events-none
           absolute
           inset-0
-          bg-gradient-to-br
-          from-white/[.045]
+          bg-linear-to-br
+          from-white/4.5
           via-transparent
           to-transparent
           "
@@ -224,8 +226,8 @@ export default function Hero() {
               className="
               absolute
               top-1/2
-              h-[380px]
-              w-[380px]
+              h-95
+              w-95
               -translate-y-1/2
               rounded-full
               bg-emerald-500/15
@@ -272,10 +274,10 @@ export default function Hero() {
               >
 
                 <img
-                  src="/src/assets/screenshots/feed.png"
+                  src={feed}
                   alt="Spotlight Feed"
                   className="
-                  w-[290px]
+                  w-72.5
                   rounded-[30px]
                   object-cover
                   "
@@ -288,7 +290,7 @@ export default function Hero() {
                   pointer-events-none
                   absolute
                   inset-0
-                  bg-gradient-to-br
+                  bg-linear-to-br
                   from-white/20
                   via-transparent
                   to-transparent
