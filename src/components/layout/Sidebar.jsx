@@ -1,39 +1,67 @@
 import { NavLink } from "react-router-dom";
+import { ChevronLeft } from "lucide-react";
+
 import { navigation } from "../../config/navigation";
+import { useSidebar } from "../../hooks/useSidebar";
 
 export default function Sidebar({ mobile = false }) {
+  const { closeSidebar } = useSidebar();
+
   return (
     <aside
       className={`
         glass
-        sticky
-        top-24
-        h-[calc(100vh-7rem)]
+        ${
+          mobile
+            ? "h-full rounded-none"
+            : "sticky top-24 h-[calc(100vh-7rem)] rounded-[28px]"
+        }
         w-71.25
         overflow-y-auto
-        rounded-[28px]
+        border-r border-white/5
         p-6
-        ${mobile ? "h-full rounded-none border-0" : ""}
       `}
     >
-      {navigation.map((group) => (
+      {navigation.map((group, index) => (
         <div
           key={group.section}
           className="mb-9"
         >
-          <h3
-            className="
-            mb-4
-            px-2
-            text-[11px]
-            font-semibold
-            uppercase
-            tracking-[0.25em]
-            text-emerald-300/70
-            "
-          >
-            {group.section}
-          </h3>
+          {/* Section Header */}
+
+          <div className="mb-4 flex items-center justify-between">
+
+            <h3
+              className="
+              text-[11px]
+              font-semibold
+              uppercase
+              tracking-[0.25em]
+              text-emerald-300/70
+              "
+            >
+              {group.section}
+            </h3>
+
+            {mobile && index === 0 && (
+              <button
+                onClick={closeSidebar}
+                className="
+                rounded-xl
+                p-2
+                text-zinc-400
+                transition-all
+                duration-200
+                hover:bg-white/5
+                hover:text-white
+                "
+                aria-label="Close sidebar"
+              >
+                <ChevronLeft size={20} />
+              </button>
+            )}
+
+          </div>
 
           <div className="space-y-1">
 
@@ -41,18 +69,23 @@ export default function Sidebar({ mobile = false }) {
               <NavLink
                 key={page.path}
                 to={page.path}
+                onClick={() => {
+                  if (mobile) {
+                    closeSidebar();
+                  }
+                }}
                 className={({ isActive }) =>
                   `
                   block
                   rounded-2xl
+                  border
                   px-4
                   py-3
-                  text-sm
                   transition-all
                   ${
                     isActive
-                      ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/20"
-                      : "text-zinc-400 hover:bg-white/5 hover:text-white"
+                      ? "border-emerald-500/20 bg-emerald-500/15 text-emerald-300"
+                      : "border-transparent text-zinc-400 hover:bg-white/5 hover:text-white"
                   }
                   `
                 }

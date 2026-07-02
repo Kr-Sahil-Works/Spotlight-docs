@@ -71,3 +71,103 @@ img {
   background: rgba(255,255,255,.12);
   border-radius: 999px;
 }
+
+/* =================================================== */
+/* Background Effects */
+/* =================================================== */
+
+.beam{
+
+position:absolute;
+
+background:linear-gradient(
+90deg,
+transparent 0%,
+rgba(16,185,129,.02) 12%,
+rgba(52,211,153,.14) 35%,
+rgba(120,255,170,.24) 50%,
+rgba(52,211,153,.22) 65%,
+rgba(16,185,129,.02) 88%,
+transparent 100%
+);
+
+filter:blur(60px);
+
+opacity:.65;
+
+animation:beamMove 28s ease-in-out infinite;
+
+will-change:transform;
+
+}
+
+
+
+@keyframes beamMove{
+
+0%{
+
+transform:
+translateY(-10%)
+translateX(-5%)
+rotate(30deg);
+
+}
+
+50%{
+
+transform:
+translateY(6%)
+translateX(3%)
+rotate(30deg);
+
+}
+
+100%{
+
+transform:
+translateY(-10%)
+translateX(-5%)
+rotate(30deg);
+
+}
+
+}
+
+@keyframes glowFloat{
+
+  0%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-40px);
+  }
+
+  100%{
+    transform:translateY(0);
+  }
+
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+.beam{
+
+width:180px;
+
+filter:blur(46px);
+
+opacity:.45;
+
+}
+
+.beam:nth-of-type(5){
+
+display:none;
+
+}
+
+}

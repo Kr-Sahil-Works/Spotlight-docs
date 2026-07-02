@@ -1,113 +1,105 @@
 import GlassCard from "../../components/common/GlassCard";
 import SectionTitle from "../../components/common/SectionTitle";
 
+import reactLogo from "../../assets/images/react.png";
+import expoLogo from "../../assets/images/expo.png";
+import convexLogo from "../../assets/images/convex.png";
+import clerkLogo from "../../assets/images/clerk.png";
+
 const stack = [
   {
-    title: "React Native",
-    desc: "Cross-platform native UI framework",
-    color: "from-cyan-500 to-sky-600",
+    name: "React Native",
+    logo: reactLogo,
+    image: true,
+    description: "Cross-platform mobile development",
   },
   {
-    title: "Expo SDK 51",
-    desc: "Development & deployment platform",
-    color: "from-zinc-700 to-zinc-900",
+    name: "Expo SDK 51",
+    logo: expoLogo,
+    image: true,
+    description: "Modern React Native workflow",
   },
   {
-    title: "TypeScript",
-    desc: "Type-safe application development",
-    color: "from-blue-500 to-blue-700",
+    name: "Convex",
+    logo: convexLogo,
+    image: true,
+    description: "Realtime backend & database",
   },
   {
-    title: "Expo Router",
-    desc: "File-based navigation",
-    color: "from-purple-500 to-indigo-700",
+    name: "Clerk",
+    logo: clerkLogo,
+    image: true,
+    description: "Authentication & user management",
   },
   {
-    title: "Convex",
-    desc: "Realtime backend & database",
-    color: "from-emerald-500 to-green-700",
+    name: "MMKV",
+    logo: "⚡",
+    image: false,
+    description: "Offline storage & caching",
   },
   {
-    title: "Clerk",
-    desc: "Authentication & session management",
-    color: "from-violet-500 to-fuchsia-700",
+    name: "FlashList",
+    logo: "🚀",
+       image: false,
+    description: "High performance lists",
   },
   {
-    title: "MMKV",
-    desc: "Offline local storage",
-    color: "from-orange-500 to-red-600",
+    name: "Expo Image",
+    logo: "🖼️",
+       image: false,
+    description: "Fast image rendering",
   },
   {
-    title: "FlashList",
-    desc: "Ultra-fast list rendering",
-    color: "from-lime-500 to-green-700",
-  },
-  {
-    title: "Expo Image",
-    desc: "Optimized image rendering",
-    color: "from-pink-500 to-rose-700",
-  },
-  {
-    title: "Expo Notifications",
-    desc: "Push notifications",
-    color: "from-yellow-500 to-orange-600",
+    name: "Expo Notifications",
+    logo: "🔔",
+       image: false,
+    description: "Push notifications",
   },
 ];
 
 export default function TechStack() {
   return (
-    <section className="mt-10">
+    <section className="section">
 
-      <GlassCard className="p-10">
+      <SectionTitle
+        eyebrow="Technology"
+        title="Powered by Modern Technologies"
+        subtitle="Spotlight uses carefully selected technologies to provide excellent developer experience and application performance."
+      />
 
-        <SectionTitle
-          badge="Technology"
-          title="Technology Stack"
-          subtitle="Modern technologies powering Spotlight."
-        />
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {stack.map((item) => (
 
-          {stack.map((item) => (
-            <div
-              key={item.title}
-              className="
-              rounded-3xl
-              border
-              border-white/5
-              bg-white/3
-              p-6
-              transition
-              hover:-translate-y-1
-              hover:border-emerald-500/20
-              "
-            >
+          <GlassCard
+            key={item.name}
+            className="transition-all duration-300 hover:-translate-y-1"
+          >
+{item.image ? (
+  <img
+    src={item.logo}
+    alt={item.name}
+    className="mb-5 h-14 w-14 object-contain"
+  />
+) : (
+  <div className="mb-5 text-5xl">
+    {item.logo}
+  </div>
+)}
 
-              <div
-                className={`
-                mb-5
-                h-14
-                w-14
-                rounded-2xl
-                bg-linear-to-br
-                ${item.color}
-                `}
-              />
+            <h3 className="text-xl font-bold">
+              {item.name}
+            </h3>
 
-              <h3 className="text-xl font-bold">
-                {item.title}
-              </h3>
+            <p className="mt-3 leading-7 text-zinc-400">
+              {item.description}
+            </p>
 
-              <p className="mt-3 text-sm leading-7 text-zinc-400">
-                {item.desc}
-              </p>
+          </GlassCard>
 
-            </div>
-          ))}
+        ))}
 
-        </div>
-
-      </GlassCard>
+      </div>
 
     </section>
   );

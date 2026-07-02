@@ -1,16 +1,24 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Introduction from "./docs/introduction";
+import Layout from "./components/layout/Layout";
+import { navigation } from "./config/navigation";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={<Introduction />}
-        />
-      </Routes>
+      <Layout>
+        <Routes>
+          {navigation.flatMap((section) =>
+            section.pages.map((page) => (
+              <Route
+                key={page.path}
+                path={page.path}
+                element={<page.component />}
+              />
+            ))
+          )}
+        </Routes>
+      </Layout>
     </BrowserRouter>
   );
 }

@@ -16,7 +16,7 @@ export default function Sidebar({ mobile = false }) {
         sticky
         top-24
         h-[calc(100vh-7rem)]
-        w-[280px]
+        w-70
         overflow-y-auto
         rounded-3xl
         p-5

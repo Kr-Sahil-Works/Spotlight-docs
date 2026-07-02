@@ -12,72 +12,83 @@ import SectionTitle from "../../components/common/SectionTitle";
 const links = [
   {
     title: "Installation",
-    desc: "Setup Spotlight locally.",
-    to: "/installation",
+    description: "Set up Spotlight locally.",
     icon: Download,
+    path: "/installation",
   },
   {
     title: "Features",
-    desc: "Explore every feature.",
-    to: "/features",
+    description: "Explore every feature.",
     icon: Layers,
+    path: "/features",
   },
   {
     title: "Delete Account",
-    desc: "Account deletion guide.",
-    to: "/delete-account",
+    description: "Account deletion guide.",
     icon: Trash2,
+    path: "/delete-account",
   },
 ];
 
 export default function QuickLinks() {
   return (
-    <section className="my-10">
-      <GlassCard className="p-10">
-        <SectionTitle
-          badge="Explore"
-          title="Continue Reading"
-          subtitle="Jump directly into the next documentation sections."
-        />
+    <section className="section">
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {links.map((item) => {
-            const Icon = item.icon;
+      <SectionTitle
+        eyebrow="Documentation"
+        title="Continue Reading"
+        subtitle="Jump directly to the next section of the documentation."
+      />
 
-            return (
-              <Link
-                key={item.title}
-                to={item.to}
-                className="group rounded-3xl border border-white/5 bg-white/3 p-7 transition hover:border-emerald-500/20 hover:bg-white/5"
+      <div className="grid gap-6 md:grid-cols-3">
+
+        {links.map((item) => {
+
+          const Icon = item.icon;
+
+          return (
+            <Link
+              key={item.title}
+              to={item.path}
+            >
+              <GlassCard
+                className="
+                h-full
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-emerald-500/20
+                "
               >
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/10">
-                  <Icon
-                    className="text-emerald-300"
-                    size={26}
-                  />
-                </div>
 
-                <h3 className="text-xl font-bold">
+                <Icon
+                  size={36}
+                  className="mb-6 text-emerald-400"
+                />
+
+                <h3 className="text-2xl font-bold">
                   {item.title}
                 </h3>
 
                 <p className="mt-3 leading-7 text-zinc-400">
-                  {item.desc}
+                  {item.description}
                 </p>
 
-                <div className="mt-8 flex items-center gap-2 font-medium text-emerald-300">
-                  Learn More
+                <div className="mt-8 flex items-center gap-2 text-emerald-300">
 
-                  <ArrowRight
-                    size={18}
-                    className="transition group-hover:translate-x-1"
-                  />
+                  Open
+
+                  <ArrowRight size={18} />
+
                 </div>
-              </Link>
-            );
-          })}
-        </div>
-      </GlassCard>
+
+              </GlassCard>
+            </Link>
+          );
+        })}
+
+      </div>
+
     </section>
   );
 }
